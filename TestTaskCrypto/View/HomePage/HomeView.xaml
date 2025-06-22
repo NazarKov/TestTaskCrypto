@@ -5,11 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestTaskCrypto.ViewModel.HomePage"
         mc:Ignorable="d"
-        Title="HomePage" Height="450" Width="800">
+        Title="HomePage" Height="450" Width="800"   x:Name="window">
     <Window.DataContext>
         <local:HomeViewModel></local:HomeViewModel>
     </Window.DataContext>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition> 
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Menu VerticalAlignment="Top" 
+              Grid.Row="0" 
+              Height="20"  >
+            <MenuItem Header="Програма">
+                <MenuItem Header="Налаштування" 
+                    Command="{Binding OpenSettingCommand}">
+                </MenuItem>
+                <MenuItem Header="Вийти" 
+                    Command="{Binding ExitAppCommand}"
+                    CommandParameter="{Binding ElementName=window, Mode=OneWay}"  >
+                </MenuItem>
+            </MenuItem> 
+            <MenuItem Header="Сайт програми"
+                Command="{Binding OpenWebSiteAppCommand}">
+            </MenuItem>
+        </Menu>
+
+
+        <Frame Grid.Row="1" Content="{Binding Page, UpdateSourceTrigger=PropertyChanged}">
+            
+        </Frame>
+        
         
     </Grid>
 </Window>
