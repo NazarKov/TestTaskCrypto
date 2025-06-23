@@ -6,9 +6,10 @@
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:local="clr-namespace:TestTaskCrypto.ViewModel.DataPage"
+      xmlns:l="clr-namespace:TestTaskCrypto.Resource.Language" 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CoinDataView">
+      Title="{x:Static l:Language.CoinInformationPage}">
     <Page.DataContext>
         <local:CoinDataViewModel></local:CoinDataViewModel>
     </Page.DataContext>
@@ -56,7 +57,7 @@
             <Button x:Name="button"  
                  Grid.Row="0" 
                  Grid.Column="0" 
-                 Content="Return_to_the_main_page" 
+                 Content="{x:Static l:Language.Return_to_the_main_page}" 
                  HorizontalAlignment="Right" 
                  VerticalAlignment="Bottom" 
                  Command="{Binding ReturnInMainPage}"  
@@ -66,7 +67,7 @@
                  Grid.Column="2"  
                  Width="50" 
                  Command="{Binding ShowOneDaysInScheduleCommand}"
-                 Content="_1_Day" 
+                 Content="{x:Static l:Language._1_day}" 
                  HorizontalAlignment="Left" 
                  Margin="35,0,0,0" 
                  Grid.Row="3"
@@ -76,7 +77,7 @@
                  Grid.Column="2"  
                  Width="50" 
                  Command="{Binding ShowSevenDaysInScheduleCommand}"
-                 Content="._7_Days" 
+                 Content="{x:Static l:Language._7_Days}" 
                  HorizontalAlignment="Left" 
                  Margin="95,0,0,0" 
                  Grid.Row="3"
@@ -86,7 +87,7 @@
                  Grid.Column="2"  
                  Width="50" 
                  Command="{Binding ShowOneMounthInScheduleCommand}"
-                 Content="_1_Mon"
+                 Content="{x:Static l:Language._1_Mon}"
                  HorizontalAlignment="Left" 
                  Margin="155,0,0,0" Grid.Row="3"
                  VerticalAlignment="Center"/>
@@ -95,7 +96,7 @@
                  Grid.Column="2" 
                  Width="50"
                  Command="{Binding ShowThreeMounthInScheduleCommand}"
-                 Content="_6_Mon"
+                 Content="{x:Static l:Language._6_Mon}"
                  HorizontalAlignment="Left"
                  Margin="215,0,0,0" 
                  Grid.Row="3"
@@ -104,7 +105,7 @@
             <Button x:Name="button5" 
                  Grid.Column="2" 
                  Width="50" Command="{Binding ShowOneYearInScheduleCommand}"
-                 Content="_1_Year" 
+                 Content="{x:Static l:Language._1_Year}" 
                  HorizontalAlignment="Left
                  " Margin="275,0,0,0" 
                  Grid.Row="3" 
@@ -114,17 +115,17 @@
                               Grid.Column="2" 
                               Series="{Binding DataSeries,UpdateSourceTrigger=PropertyChanged}"  >
                 <lvc:CartesianChart.AxisX>
-                    <lvc:Axis Title="data"  
+                    <lvc:Axis Title="{x:Static l:Language.Data}"  
                            Labels="{Binding Dates}"  />
                 </lvc:CartesianChart.AxisX>
                 <lvc:CartesianChart.AxisY>
-                           <lvc:Axis Title="Price"  />
+                    <lvc:Axis Title="{x:Static l:Language.Price}"  />
                 </lvc:CartesianChart.AxisY>
             </lvc:CartesianChart>
 
             <Label x:Name="label5" 
                 Grid.Column="2" 
-                Content="Markets_where_you_can_buy_currency" 
+                Content="{x:Static l:Language.Markets_where_you_can_buy_currency}" 
                 HorizontalAlignment="Left" 
                 Margin="45,0,0,0" 
                 Grid.Row="5"
@@ -145,27 +146,27 @@
                    GridLinesVisibility="None" SelectionMode="Single"
                    >
                 <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Name_of_the_market"
+                    <DataGridTextColumn Header="{x:Static l:Language.Name_of_the_market}"
                                      Binding="{Binding exchangeId}"
                                      FontFamily="Segoe UI">
 
                     </DataGridTextColumn>
-                                            <DataGridTextColumn Header="coin_to_buy"
+                    <DataGridTextColumn Header="{x:Static l:Language.coin_to_buy}"
                                      Binding="{Binding baseId}"
                                      FontFamily="Segoe UI">
 
                     </DataGridTextColumn>
-                                            <DataGridTextColumn Header="the_coin_to_buy_with"
+                    <DataGridTextColumn Header="{x:Static l:Language.the_coin_to_buy_with}"
                                      Binding="{Binding quoteId}" 
                                      FontFamily="Segoe UI">
 
                     </DataGridTextColumn>
-                                            <DataGridTextColumn Header="Price"
+                    <DataGridTextColumn Header="{x:Static l:Language.Price}"
                                      Binding="{Binding priceUsd}"
                                      FontFamily="Segoe UI">
 
                     </DataGridTextColumn>
-                                            <DataGridTextColumn Header="Volume_in_24_hours"
+                    <DataGridTextColumn Header="{x:Static l:Language.Volume_in_24_hours}"
                                      Binding="{Binding volumeUsd24Hr}" 
                                      FontFamily="Segoe UI">
 
@@ -173,7 +174,7 @@
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                      <Button Content="Site"
+                                <Button Content="{x:Static l:Language.Site}"
                                      Command="{Binding ElementName=Page , Path=DataContext.RedirectWebCiteCommand }" 
                                      Width="125"
                                      CommandParameter="{Binding}">
@@ -185,14 +186,14 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <GroupBox Header="Price_calculator" 
+            <GroupBox Header="{x:Static l:Language.Price_calculator}" 
                    Grid.Row="4" Grid.Column="3"
                    FontSize="18" VerticalAlignment="Top" 
                    Height="150" >
                 <Grid>
                     <Label x:Name="label2" 
                         Grid.Column="3"
-                        Content="Number_of_coins" 
+                        Content="{x:Static l:Language.Number_of_coins}" 
                         HorizontalAlignment="Left"
                         Margin="15,15,0,0" 
                         Grid.Row="3" 
@@ -226,7 +227,7 @@
             </GroupBox>
 
             <GroupBox x:Name="groupBox" 
-                   Header="Currency_converter" 
+                   Header="{x:Static l:Language.Currency_converter}" 
                    Grid.Column="3" 
                    Grid.Row="4" 
                    VerticalAlignment="Bottom" 
@@ -286,7 +287,7 @@
                 </Grid>
             </GroupBox>
             <Button Command="{Binding ReturnInMainPage}" 
-                 Content="Return_to_the_main_page"
+                 Content="{x:Static l:Language.Return_to_the_main_page}"
                  Width="190" 
                  Height="30"
                  Grid.Row="8" 

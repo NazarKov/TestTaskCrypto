@@ -5,6 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TestTaskCrypto.ViewModel.DataPage"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:l="clr-namespace:TestTaskCrypto.Resource.Language" 
+     
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CoinListView" x:Name="Page">
@@ -60,20 +62,20 @@
            CanUserAddRows="False"
            ColumnWidth="*">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Назва" 
+                <DataGridTextColumn Header="{x:Static l:Language.Name}" 
                              Binding="{Binding name}"/>
-                <DataGridTextColumn Header="Код" 
+                <DataGridTextColumn Header="{x:Static l:Language.code}" 
                              Binding="{Binding symbol}"/>
-                <DataGridTextColumn Header="Рейтинг" 
+                <DataGridTextColumn Header="{x:Static l:Language.rating}" 
                              Binding="{Binding rank}"  />
-                <DataGridTextColumn Header="Ціна"
+                <DataGridTextColumn Header="{x:Static l:Language.Price}"
                              Binding="{Binding priceUsd}" />
-                <DataGridTextColumn Header="обєм за 24 години" 
+                <DataGridTextColumn Header="{x:Static l:Language.Volume_in_24_hours}" 
                              Binding="{Binding volumeUsd24Hr}" />
                 <DataGridTemplateColumn Width="120">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="інформація"
+                            <Button Content="{x:Static l:Language.Details}"
                              Width="120" 
                              Command="{Binding ElementName=Page , Path=DataContext.OpenCoinInformanionComman }"
                              
@@ -84,7 +86,7 @@
                 <DataGridTemplateColumn Width="120">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="сайт" 
+                            <Button Content="{x:Static l:Language.Site}" 
                              Width="120" Command="{Binding ElementName=Page , Path=DataContext.RedirectWebCiteCommand }" 
                              
                              CommandParameter="{Binding}"></Button>
@@ -118,7 +120,7 @@
                         </i:Interaction.Triggers>
                     </ComboBox>
                     <TextBlock x:Name="tb"
-                           Text="кількість криптовалют"
+                           Text="{x:Static l:Language.The_number_of_lines_is_10}"
                            IsHitTestVisible="False" 
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"

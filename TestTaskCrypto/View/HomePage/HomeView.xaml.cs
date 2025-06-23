@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,8 @@ namespace TestTaskCrypto.View.HomePage
     {
         public HomeView()
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.languageCode);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.languageCode);
             InitializeComponent();
         }
     }
