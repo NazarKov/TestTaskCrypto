@@ -6,7 +6,7 @@
       <Value Profile="(Default)">es</Value>
     </Setting>
     <Setting Name="Themes" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">light</Value>
     </Setting>
   </Settings>
 </SettingsFile>

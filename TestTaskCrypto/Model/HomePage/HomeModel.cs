@@ -17,7 +17,7 @@ namespace TestTaskCrypto.Model.HomePage
 
         public void RediretcToWebSite()
         {
-            Process.Start(new ProcessStartInfo("https://github.com/NazarKov/TestProjectCryptocurrencies") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://github.com/NazarKov/TestTaskCrypto") { UseShellExecute = true });
         }
 
     }

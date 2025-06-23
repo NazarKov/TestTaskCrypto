@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:TestTaskCrypto.ViewModel.HomePage"
         xmlns:l="clr-namespace:TestTaskCrypto.Resource.Language" 
         mc:Ignorable="d"
+        Style="{DynamicResource window}"
+        
         Title="{x:Static l:Language.Home_page}" Height="450" Width="800"   x:Name="window">
     <Window.DataContext>
         <local:HomeViewModel></local:HomeViewModel>
@@ -19,24 +21,28 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Menu VerticalAlignment="Top" 
+              Style="{DynamicResource Menu}"
               Grid.Row="0" 
               Height="20"  >
             <MenuItem Header="{x:Static l:Language.program}">
                 <MenuItem Header="{x:Static l:Language.settings}" 
-                    Command="{Binding OpenSettingCommand}">
+                          Command="{Binding OpenSettingCommand}"
+                          Style="{DynamicResource MenuItem}">
                 </MenuItem>
                 <MenuItem Header="{x:Static l:Language.exit}" 
-                    Command="{Binding ExitAppCommand}"
-                    CommandParameter="{Binding ElementName=window, Mode=OneWay}"  >
+                          Command="{Binding ExitAppCommand}"
+                          CommandParameter="{Binding ElementName=window, Mode=OneWay}" 
+                          Style="{DynamicResource MenuItem}">
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="{x:Static l:Language.Program_website}"
-                Command="{Binding OpenWebSiteAppCommand}">
+                      Command="{Binding OpenWebSiteAppCommand}"
+                      Style="{DynamicResource MenuItem}">
             </MenuItem>
         </Menu>
 
 
-        <!--<Frame x:Name="frame" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="{Binding Path=Page, UpdateSourceTrigger=PropertyChanged}" NavigationUIVisibility="Hidden" ></Frame>-->
+        <Frame x:Name="frame" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="{Binding Path=Page, UpdateSourceTrigger=PropertyChanged}" NavigationUIVisibility="Hidden" ></Frame>
 
 
 

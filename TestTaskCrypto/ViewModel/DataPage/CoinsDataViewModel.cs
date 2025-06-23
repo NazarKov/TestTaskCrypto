@@ -90,7 +90,7 @@ namespace TestTaskCrypto.ViewModel.DataPage
         {
             Session.Coin = ((Coin)parameter);
             Session.CoinList = Coins;
-            Navigation.Notify("OpenCoinsDataNavigationButton");
+            Navigation.Notify("OpenCoinDataNavigationButton");
         }
 
         private bool CanRegister(object parameter) => true;

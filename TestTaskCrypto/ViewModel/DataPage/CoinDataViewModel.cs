@@ -14,6 +14,7 @@ using TestTaskCrypto.Model.DataPage;
 using System.Diagnostics;
 using TestTaskCrypto.DataBase.Enum;
 using TestTaskCrypto.Helpers;
+using System.Windows;
 
 namespace TestTaskCrypto.ViewModel.DataPage
 {
@@ -55,7 +56,7 @@ namespace TestTaskCrypto.ViewModel.DataPage
             _selectedValueComboBox = string.Empty;
             _calculatorResult = string.Empty;
 
-            _returnInMainPage = new DelegateCommand(() => { /*Navigation.NavigationServise.OpenMainPage();*/ });
+            _returnInMainPage = new DelegateCommand(() => { Navigation.Notify("OpenCoinsDataNavigationButton"); });
             _showOneDaysInScheduleCommand = new DelegateCommand(() => { SetSchedule(TypeInterval.OneDay); });
             _showOSevenDaysInScheduleCommand = new DelegateCommand(() => { SetSchedule(TypeInterval.SevenDays); });
             _showOneMounthInScheduleCommand = new DelegateCommand(() => { SetSchedule(TypeInterval.OneMounth); });
@@ -70,10 +71,7 @@ namespace TestTaskCrypto.ViewModel.DataPage
             _coins = Session.CoinList;
             _calculatorValue = "1";
             _converterResult = 0;
-
-            //Height = Application.Current.MainWindow.Height;
-            //Width = Application.Current.MainWindow.Width;
-
+             
             DataSeries = new SeriesCollection();
             DataSeries.Add(new LineSeries() { PointGeometrySize = 0 });
             DataSeries[0].Values = new ChartValues<double>();
@@ -192,20 +190,6 @@ namespace TestTaskCrypto.ViewModel.DataPage
             set { _nameCoin = value; }
         }
 
-        private double _width;
-        public double Width
-        {
-            get { return _width; }
-            set { _width = value; OnPropertyChanged(nameof(Width)); }
-        }
-
-        private double _height;
-        public double Height
-        {
-            get { return _height; }
-            set { _height = value; OnPropertyChanged(nameof(Height)); }
-        }
-
         private List<DataSchedule> _coinPrices;
         public List<DataSchedule> CoinPrices
         {
@@ -220,7 +204,7 @@ namespace TestTaskCrypto.ViewModel.DataPage
         public ICommand ShowThreeMounthInScheduleCommand => _showThreeMounthInScheduleCommand;
         public ICommand ShowOneYearInScheduleCommand => _showOneYearInScheduleCommand;
 
-        public ICommand RedirectWebCiteCommand { get => new DelegateParameterCommand(RedirectWebCite, CanRegister); }
+        public ICommand RedirectToWebCiteCommand { get => new DelegateParameterCommand(RedirectWebCite, CanRegister); }
         private void RedirectWebCite(object parameter)
         {
             Process.Start(new ProcessStartInfo("https://" + ((CoinMarker)parameter).exchangeId + ".com") { UseShellExecute = true });

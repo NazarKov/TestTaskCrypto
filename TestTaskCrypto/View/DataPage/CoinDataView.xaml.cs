@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestTaskCrypto.ViewModel.DataPage;
 
 namespace TestTaskCrypto.View.DataPage
 {
@@ -23,6 +24,7 @@ namespace TestTaskCrypto.View.DataPage
         public CoinDataView()
         {
             InitializeComponent();
+            DataContext = new CoinDataViewModel();
         }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TestTaskCrypto.ViewModel.SettingPage"
         xmlns:l="clr-namespace:TestTaskCrypto.Resource.Language" 
         mc:Ignorable="d"
-        Title="SettingView" Height="450" Width="800">
+        Title="SettingView" Height="450" Width="800" ResizeMode="NoResize" Style="{DynamicResource window}">
     <Window.DataContext>
         <local:SettingViewModel></local:SettingViewModel>
     </Window.DataContext>

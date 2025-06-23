@@ -37,7 +37,7 @@ namespace TestTaskCrypto.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("light")]
         public string Themes {
             get {
                 return ((string)(this["Themes"]));

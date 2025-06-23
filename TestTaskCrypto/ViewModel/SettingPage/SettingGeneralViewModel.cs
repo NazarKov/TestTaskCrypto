@@ -34,7 +34,7 @@ namespace TestTaskCrypto.ViewModel.SettingPage
             {
                 SelectedIdex = 1;
             }
-            if (Properties.Settings.Default.languageCode == "light")
+            if (Properties.Settings.Default.Themes == "light")
             {
                 SelectedIndexThemes = 0;
             }

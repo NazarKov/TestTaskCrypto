@@ -6,12 +6,11 @@
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:local="clr-namespace:TestTaskCrypto.ViewModel.DataPage"
-      xmlns:l="clr-namespace:TestTaskCrypto.Resource.Language" 
+      xmlns:l="clr-namespace:TestTaskCrypto.Resource.Language"  
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="{x:Static l:Language.CoinInformationPage}">
+      Title="{x:Static l:Language.CoinInformationPage}"   Style="{DynamicResource page}">
     <Page.DataContext>
-        <local:CoinDataViewModel></local:CoinDataViewModel>
+        <local:CoinDataViewModel/>
     </Page.DataContext>
 
     <ScrollViewer>
@@ -22,7 +21,7 @@
                 <ColumnDefinition Width="600"></ColumnDefinition>
                 <ColumnDefinition Width="600"></ColumnDefinition>
                 <ColumnDefinition Width="150"></ColumnDefinition>
-                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="200*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"></RowDefinition>
@@ -61,6 +60,7 @@
                  HorizontalAlignment="Right" 
                  VerticalAlignment="Bottom" 
                  Command="{Binding ReturnInMainPage}"  
+                 Style="{DynamicResource Button}" 
                  Width="140" />
 
             <Button x:Name="button1"
@@ -68,6 +68,7 @@
                  Width="50" 
                  Command="{Binding ShowOneDaysInScheduleCommand}"
                  Content="{x:Static l:Language._1_day}" 
+                 Style="{DynamicResource Button}" 
                  HorizontalAlignment="Left" 
                  Margin="35,0,0,0" 
                  Grid.Row="3"
@@ -78,6 +79,7 @@
                  Width="50" 
                  Command="{Binding ShowSevenDaysInScheduleCommand}"
                  Content="{x:Static l:Language._7_Days}" 
+                 Style="{DynamicResource Button}" 
                  HorizontalAlignment="Left" 
                  Margin="95,0,0,0" 
                  Grid.Row="3"
@@ -88,6 +90,7 @@
                  Width="50" 
                  Command="{Binding ShowOneMounthInScheduleCommand}"
                  Content="{x:Static l:Language._1_Mon}"
+                 Style="{DynamicResource Button}" 
                  HorizontalAlignment="Left" 
                  Margin="155,0,0,0" Grid.Row="3"
                  VerticalAlignment="Center"/>
@@ -97,6 +100,7 @@
                  Width="50"
                  Command="{Binding ShowThreeMounthInScheduleCommand}"
                  Content="{x:Static l:Language._6_Mon}"
+                 Style="{DynamicResource Button}" 
                  HorizontalAlignment="Left"
                  Margin="215,0,0,0" 
                  Grid.Row="3"
@@ -105,7 +109,8 @@
             <Button x:Name="button5" 
                  Grid.Column="2" 
                  Width="50" Command="{Binding ShowOneYearInScheduleCommand}"
-                 Content="{x:Static l:Language._1_Year}" 
+                 Content="{x:Static l:Language._1_Year}"
+                 Style="{DynamicResource Button}" 
                  HorizontalAlignment="Left
                  " Margin="275,0,0,0" 
                  Grid.Row="3" 
@@ -113,13 +118,16 @@
 
             <lvc:CartesianChart  Grid.Row="4"
                               Grid.Column="2" 
-                              Series="{Binding DataSeries,UpdateSourceTrigger=PropertyChanged}"  >
+                              Series="{Binding DataSeries,UpdateSourceTrigger=PropertyChanged}"
+                              Style="{DynamicResource CartesianChart}" >
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Title="{x:Static l:Language.Data}"  
-                           Labels="{Binding Dates}"  />
+                              Labels="{Binding Dates}" 
+                              Style="{DynamicResource Axis}"/>
                 </lvc:CartesianChart.AxisX>
                 <lvc:CartesianChart.AxisY>
-                    <lvc:Axis Title="{x:Static l:Language.Price}"  />
+                    <lvc:Axis Title="{x:Static l:Language.Price}" 
+                              Style="{DynamicResource Axis}"/>
                 </lvc:CartesianChart.AxisY>
             </lvc:CartesianChart>
 
@@ -137,6 +145,8 @@
                    Grid.Column="2"
                    Grid.Row="6"
                    ItemsSource="{Binding CoinMarkers}"
+                   ColumnHeaderStyle="{DynamicResource DataViewHeaderStyle}" 
+                   Style="{DynamicResource DataGrid}" 
                    Grid.ColumnSpan="2"  
                    Grid.RowSpan="2" 
                    Margin="0,0,0,35"
@@ -175,8 +185,9 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="{x:Static l:Language.Site}"
-                                     Command="{Binding ElementName=Page , Path=DataContext.RedirectWebCiteCommand }" 
+                                     Command="{Binding ElementName=Page , Path=DataContext.RedirectToWebCiteCommand }" 
                                      Width="125"
+                                     Style="{StaticResource Button}"
                                      CommandParameter="{Binding}">
 
                                 </Button>
@@ -189,6 +200,7 @@
             <GroupBox Header="{x:Static l:Language.Price_calculator}" 
                    Grid.Row="4" Grid.Column="3"
                    FontSize="18" VerticalAlignment="Top" 
+                   Style="{DynamicResource GroupBox}"
                    Height="150" >
                 <Grid>
                     <Label x:Name="label2" 
@@ -227,7 +239,8 @@
             </GroupBox>
 
             <GroupBox x:Name="groupBox" 
-                   Header="{x:Static l:Language.Currency_converter}" 
+                   Header="{x:Static l:Language.Currency_converter}"
+                   Style="{DynamicResource GroupBox}"
                    Grid.Column="3" 
                    Grid.Row="4" 
                    VerticalAlignment="Bottom" 
@@ -288,6 +301,7 @@
             </GroupBox>
             <Button Command="{Binding ReturnInMainPage}" 
                  Content="{x:Static l:Language.Return_to_the_main_page}"
+                 Style="{DynamicResource Button}"
                  Width="190" 
                  Height="30"
                  Grid.Row="8" 

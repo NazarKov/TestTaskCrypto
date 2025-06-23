@@ -31,12 +31,22 @@ namespace TestTaskCrypto.ViewModel.HomePage
             _openWebSiteAppCommand = new DelegateCommand(OpenWebSiteApp);
 
 
-             Navigation.Subscribe(nameof(OpenCoinsDataNavigationButton), OpenCoinsDataNavigationButton);
-             setFramaPage();
+            Navigation.Subscribe(nameof(OpenCoinDataNavigationButton), OpenCoinDataNavigationButton);
+            Navigation.Subscribe(nameof(OpenCoinsDataNavigationButton), OpenCoinsDataNavigationButton);
+            SetFramePage();
+            SetThemes();
         }
-        private void setFramaPage()
+        private void SetFramePage()
         { 
             Page = new CoinsDataView();
+        }
+
+        private void SetThemes()
+        {
+            Application.Current.Resources.MergedDictionaries.Clear();
+            var dictionary = new ResourceDictionary();
+            dictionary.Source = new Uri("/Resource/Themes/" + Properties.Settings.Default.Themes.ToString() + ".xaml", UriKind.Relative);
+            Application.Current.Resources.MergedDictionaries.Add(dictionary);
         }
 
 
@@ -59,11 +69,16 @@ namespace TestTaskCrypto.ViewModel.HomePage
             Window? window = parameter as Window;
             window?.Close();
         }  
-        private bool CanRegister(object parameter) => true; 
- 
+        private bool CanRegister(object parameter) => true;
+
+        private void OpenCoinDataNavigationButton(object parameter)
+        {
+            Page = new CoinDataView();
+        }
+
         private void OpenCoinsDataNavigationButton(object parameter)
         {
-            Page = new CoinDataView(); 
+            Page = new CoinsDataView();
         }
 
         public ICommand OpenWebSiteAppCommand => _openWebSiteAppCommand;

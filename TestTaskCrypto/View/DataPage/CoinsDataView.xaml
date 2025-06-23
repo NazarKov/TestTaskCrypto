@@ -9,7 +9,8 @@
      
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CoinListView" x:Name="Page">
+      Title="CoinListView" x:Name="Page"
+      Style="{DynamicResource page}">
     <Page.DataContext>
         <local:CoinsDataViewModel></local:CoinsDataViewModel>
     </Page.DataContext>
@@ -55,7 +56,8 @@
            Grid.RowSpan="2"
            ItemsSource="{Binding Coins}"
            AutoGenerateColumns="False"
-            
+           Style="{DynamicResource DataGrid}"
+           ColumnHeaderStyle="{DynamicResource DataViewHeaderStyle}" 
            GridLinesVisibility="None" SelectionMode="Single"
            VerticalAlignment="Stretch"
            HorizontalAlignment="Stretch" 
@@ -78,7 +80,7 @@
                             <Button Content="{x:Static l:Language.Details}"
                              Width="120" 
                              Command="{Binding ElementName=Page , Path=DataContext.OpenCoinInformanionComman }"
-                             
+                             Style="{DynamicResource Button}"  
                              CommandParameter="{Binding}"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -88,7 +90,7 @@
                         <DataTemplate>
                             <Button Content="{x:Static l:Language.Site}" 
                              Width="120" Command="{Binding ElementName=Page , Path=DataContext.RedirectWebCiteCommand }" 
-                             
+                             Style="{DynamicResource Button}"  
                              CommandParameter="{Binding}"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
