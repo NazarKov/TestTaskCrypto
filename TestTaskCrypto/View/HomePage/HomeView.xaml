@@ -35,10 +35,9 @@
         </Menu>
 
 
-        <Frame Grid.Row="1" Content="{Binding Page, UpdateSourceTrigger=PropertyChanged}">
-            
-        </Frame>
-        
-        
+        <Frame x:Name="frame" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="{Binding Path=Page, UpdateSourceTrigger=PropertyChanged}" NavigationUIVisibility="Hidden" ></Frame>
+
+
+
     </Grid>
 </Window>

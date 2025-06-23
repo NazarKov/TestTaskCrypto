@@ -20,16 +20,24 @@ namespace TestTaskCrypto.Model.DataPage
 
         public List<Coin> GetCoin(int count = 10)
         {
-            Task t = Task.Run(async () =>
+            try
             {
-                var result =  await MainCoinCapController.Coin.Get();
-                if (result != null && result.data.Count > 0)
+                Task t = Task.Run(async () =>
                 {
-                    _coins = result.data;
-                }
-            });
-            t.Wait();
-            return _coins.Take(count).ToList();
+                    var result = await MainCoinCapController.Coin.Get();
+                    if (result != null && result.data.Count > 0)
+                    {
+                        _coins = result.data;
+                    }
+                });
+                t.Wait();
+                return _coins.Take(count).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return new List<Coin>();
+            }
         }
 
 

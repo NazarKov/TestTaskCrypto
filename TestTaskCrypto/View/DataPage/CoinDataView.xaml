@@ -3,12 +3,300 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TestTaskCrypto.View.DataPage"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:local="clr-namespace:TestTaskCrypto.ViewModel.DataPage"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CoinDataView">
+    <Page.DataContext>
+        <local:CoinDataViewModel></local:CoinDataViewModel>
+    </Page.DataContext>
 
-    <Grid>
-        
-    </Grid>
+    <ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="600"></ColumnDefinition>
+                <ColumnDefinition Width="600"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="300"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="150*"></RowDefinition>
+                <RowDefinition Height="50*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="label"
+                Grid.Column="2" 
+                Grid.Row="1" 
+                Content="{Binding NameCoin}" 
+                FontSize="30" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                FontFamily="Segoe UI"/>
+
+            <Label x:Name="label1" 
+                Grid.Column="2" 
+                Grid.Row="2" 
+                Content="{Binding PriceCoin}" 
+                FontSize="20" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                FontFamily="Segoe UI"/>
+
+            <Button x:Name="button"  
+                 Grid.Row="0" 
+                 Grid.Column="0" 
+                 Content="Return_to_the_main_page" 
+                 HorizontalAlignment="Right" 
+                 VerticalAlignment="Bottom" 
+                 Command="{Binding ReturnInMainPage}"  
+                 Width="140" />
+
+            <Button x:Name="button1"
+                 Grid.Column="2"  
+                 Width="50" 
+                 Command="{Binding ShowOneDaysInScheduleCommand}"
+                 Content="_1_Day" 
+                 HorizontalAlignment="Left" 
+                 Margin="35,0,0,0" 
+                 Grid.Row="3"
+                 VerticalAlignment="Center"/>
+
+            <Button x:Name="button2" 
+                 Grid.Column="2"  
+                 Width="50" 
+                 Command="{Binding ShowSevenDaysInScheduleCommand}"
+                 Content="._7_Days" 
+                 HorizontalAlignment="Left" 
+                 Margin="95,0,0,0" 
+                 Grid.Row="3"
+                 VerticalAlignment="Center"/>
+
+            <Button x:Name="button3"
+                 Grid.Column="2"  
+                 Width="50" 
+                 Command="{Binding ShowOneMounthInScheduleCommand}"
+                 Content="_1_Mon"
+                 HorizontalAlignment="Left" 
+                 Margin="155,0,0,0" Grid.Row="3"
+                 VerticalAlignment="Center"/>
+
+            <Button x:Name="button4" 
+                 Grid.Column="2" 
+                 Width="50"
+                 Command="{Binding ShowThreeMounthInScheduleCommand}"
+                 Content="_6_Mon"
+                 HorizontalAlignment="Left"
+                 Margin="215,0,0,0" 
+                 Grid.Row="3"
+                 VerticalAlignment="Center"/>
+
+            <Button x:Name="button5" 
+                 Grid.Column="2" 
+                 Width="50" Command="{Binding ShowOneYearInScheduleCommand}"
+                 Content="_1_Year" 
+                 HorizontalAlignment="Left
+                 " Margin="275,0,0,0" 
+                 Grid.Row="3" 
+                 VerticalAlignment="Center"/>
+
+            <lvc:CartesianChart  Grid.Row="4"
+                              Grid.Column="2" 
+                              Series="{Binding DataSeries,UpdateSourceTrigger=PropertyChanged}"  >
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="data"  
+                           Labels="{Binding Dates}"  />
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                           <lvc:Axis Title="Price"  />
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+
+            <Label x:Name="label5" 
+                Grid.Column="2" 
+                Content="Markets_where_you_can_buy_currency" 
+                HorizontalAlignment="Left" 
+                Margin="45,0,0,0" 
+                Grid.Row="5"
+                VerticalAlignment="Center"
+                FontSize="18"
+                FontFamily="Segoe UI"/>
+
+            <DataGrid x:Name="dataGrid" 
+                   Grid.Column="2"
+                   Grid.Row="6"
+                   ItemsSource="{Binding CoinMarkers}"
+                   Grid.ColumnSpan="2"  
+                   Grid.RowSpan="2" 
+                   Margin="0,0,0,35"
+                   CanUserAddRows="False"
+                   AutoGenerateColumns="False"
+                   ColumnWidth="*" 
+                   GridLinesVisibility="None" SelectionMode="Single"
+                   >
+                <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Name_of_the_market"
+                                     Binding="{Binding exchangeId}"
+                                     FontFamily="Segoe UI">
+
+                    </DataGridTextColumn>
+                                            <DataGridTextColumn Header="coin_to_buy"
+                                     Binding="{Binding baseId}"
+                                     FontFamily="Segoe UI">
+
+                    </DataGridTextColumn>
+                                            <DataGridTextColumn Header="the_coin_to_buy_with"
+                                     Binding="{Binding quoteId}" 
+                                     FontFamily="Segoe UI">
+
+                    </DataGridTextColumn>
+                                            <DataGridTextColumn Header="Price"
+                                     Binding="{Binding priceUsd}"
+                                     FontFamily="Segoe UI">
+
+                    </DataGridTextColumn>
+                                            <DataGridTextColumn Header="Volume_in_24_hours"
+                                     Binding="{Binding volumeUsd24Hr}" 
+                                     FontFamily="Segoe UI">
+
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                      <Button Content="Site"
+                                     Command="{Binding ElementName=Page , Path=DataContext.RedirectWebCiteCommand }" 
+                                     Width="125"
+                                     CommandParameter="{Binding}">
+
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <GroupBox Header="Price_calculator" 
+                   Grid.Row="4" Grid.Column="3"
+                   FontSize="18" VerticalAlignment="Top" 
+                   Height="150" >
+                <Grid>
+                    <Label x:Name="label2" 
+                        Grid.Column="3"
+                        Content="Number_of_coins" 
+                        HorizontalAlignment="Left"
+                        Margin="15,15,0,0" 
+                        Grid.Row="3" 
+                        VerticalAlignment="Top" 
+                        FontFamily="Segoe UI"/>
+
+                    <TextBox x:Name="textBox"
+                          HorizontalAlignment="Left"
+                          Margin="15,55,0,0" 
+                          TextWrapping="Wrap" 
+                          Text="{Binding CalculatorValues,UpdateSourceTrigger=PropertyChanged}" 
+                          VerticalAlignment="Top"
+                          Width="197"
+                          FontFamily="Segoe UI">
+                          <i:Interaction.Triggers>
+                              <i:EventTrigger EventName="TextChanged">
+                                  <i:InvokeCommandAction Command="{Binding ReturnCalulatorResultCommand}" />
+                              </i:EventTrigger>
+                          </i:Interaction.Triggers>
+                    </TextBox>
+                    <Label x:Name="label3"
+                        Grid.Column="3" 
+                        Content="{Binding CalculatorResult,UpdateSourceTrigger=PropertyChanged}" 
+                        HorizontalAlignment="Left"
+                        Margin="15,90,0,0"
+                        Grid.Row="4" 
+                        VerticalAlignment="Top" 
+                        FontFamily="Segoe UI"/>
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox x:Name="groupBox" 
+                   Header="Currency_converter" 
+                   Grid.Column="3" 
+                   Grid.Row="4" 
+                   VerticalAlignment="Bottom" 
+                   Height="150" FontSize="18" >
+                <Grid>
+                    <Label Content="{Binding NameCoin}" 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="15,15,0,0"
+                        FontFamily="Segoe UI">
+
+                    </Label>
+                    <TextBox x:Name="textbox" 
+                          Width="200" 
+                          Text="{Binding ConverterValue , UpdateSourceTrigger=PropertyChanged}"
+                          HorizontalAlignment="Left" 
+                          VerticalAlignment="Top"
+                          Margin="180,15,0,0" FontFamily="Segoe UI">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding ReturnConvertedResultCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                    <TextBox x:Name="textbox1" 
+                          Width="200"
+                          Text="{Binding ConverterResult,UpdateSourceTrigger=PropertyChanged}"
+                          HorizontalAlignment="Left" 
+                          VerticalAlignment="Top"
+                          Margin="180,45,0,0"
+                          FontFamily="Segoe UI">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding ReturnConvertedValueCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                    <ComboBox HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Margin="15,45,0,0"
+                           ItemsSource="{Binding CoinNameList}" 
+                           SelectedValue="{Binding SelectedValueComboBox}"
+                           FontFamily="Segoe UI" />
+
+                    <Label x:Name="label4"
+                        Content="$" 
+                        HorizontalAlignment="Left
+                        " Margin="160,10,0,0"
+                        VerticalAlignment="Top"
+                        FontFamily="Segoe UI"/>
+                    <Label x:Name="label6" 
+                        Content="$"
+                        HorizontalAlignment="Left"
+                        Margin="160,40,0,0"
+                        VerticalAlignment="Top" 
+                        FontFamily="Segoe UI"/>
+                </Grid>
+            </GroupBox>
+            <Button Command="{Binding ReturnInMainPage}" 
+                 Content="Return_to_the_main_page"
+                 Width="190" 
+                 Height="30"
+                 Grid.Row="8" 
+                 Grid.Column="2"
+                 Grid.ColumnSpan="2"
+                 HorizontalAlignment="Center" 
+                 VerticalAlignment="Bottom"
+                 Margin="0,15,0,50">
+
+            </Button>
+        </Grid>
+    </ScrollViewer>
 </Page>

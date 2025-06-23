@@ -10,7 +10,7 @@ namespace TestTaskCrypto.Helpers.NetworkService.CoinGeckoApi
     public class MainCoinCapController
     {
         private readonly string _url = "https://rest.coincap.io/v3";
-        private readonly string _token = "16746262e51c8c999e0a7d6670873dfd73a6fd97272f3d8b130679f416b3c747";
+        private readonly string _token = "a7e605aaa3bee607c51809af13f58b272f8caac3c28d36c0231650707ff88ebf";
 
         public static CoinController Coin; 
         

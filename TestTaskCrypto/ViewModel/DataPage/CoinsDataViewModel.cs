@@ -88,8 +88,8 @@ namespace TestTaskCrypto.ViewModel.DataPage
         public ICommand OpenCoinInformanionComman { get => new DelegateParameterCommand(OpenCoinInformanion, CanRegister); }
         private void OpenCoinInformanion(object parameter)
         {
-            //StaticResourse.Coin = ((Coin)parameter);
-            //StaticResourse.CoinList = ListCoints;
+            Session.Coin = ((Coin)parameter);
+            Session.CoinList = Coins;
             Navigation.Notify("OpenCoinsDataNavigationButton");
         }
 

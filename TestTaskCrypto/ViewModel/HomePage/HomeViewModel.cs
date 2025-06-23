@@ -31,9 +31,12 @@ namespace TestTaskCrypto.ViewModel.HomePage
             _openWebSiteAppCommand = new DelegateCommand(OpenWebSiteApp);
 
 
-            Page = new CoinsDataView();
-             
              Navigation.Subscribe(nameof(OpenCoinsDataNavigationButton), OpenCoinsDataNavigationButton);
+             setFramaPage();
+        }
+        private void setFramaPage()
+        { 
+            Page = new CoinsDataView();
         }
 
 
@@ -60,7 +63,7 @@ namespace TestTaskCrypto.ViewModel.HomePage
  
         private void OpenCoinsDataNavigationButton(object parameter)
         {
-            Page = new CoinsDataView(); 
+            Page = new CoinDataView(); 
         }
 
         public ICommand OpenWebSiteAppCommand => _openWebSiteAppCommand;

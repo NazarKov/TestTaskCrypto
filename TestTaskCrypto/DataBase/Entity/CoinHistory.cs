@@ -8,13 +8,13 @@ namespace TestTaskCrypto.DataBase.Entity
 {
     public class CoinHistory
     {
-        public string? priceUsd { get; set; }
-        public object? time { get; set; }
-        public DateTime? Date { get; set; }
+        public string priceUsd { get; set; }
+        public long time { get; set; }
+        public DateTime date { get; set; }
     }
     public class CoinHistoryRoot
     {
-        public List<CoinHistory> Data { get; set; }
+        public List<CoinHistory> data { get; set; }
         public long? timestamp { get; set; }
     }
 }

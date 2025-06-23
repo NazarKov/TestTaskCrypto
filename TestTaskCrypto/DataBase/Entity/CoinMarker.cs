@@ -19,7 +19,7 @@ namespace TestTaskCrypto.DataBase.Entity
     }
     public class CoinMarkerRoot
     {
-        public List<CoinMarker>? Data { get; set; }
+        public List<CoinMarker>? data { get; set; }
         public long timestamp { get; set; }
     }
 }
